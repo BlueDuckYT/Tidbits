@@ -1,9 +1,28 @@
-package com.example.examplemod;
+package blueduck.tidbits;
 
+import blueduck.tidbits.registry.TidbitsBlocks;
+import blueduck.tidbits.registry.TidbitsConfiguredFeatures;
+import blueduck.tidbits.registry.TidbitsVillagers;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.MerchantOffer;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ITag;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.village.PointOfInterestType;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -25,15 +44,20 @@ public class Tidbits
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public ExampleMod() {
+    public static String MODID = "tidbits";
+
+    public Tidbits() {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        //FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
         // Register the doClientStuff method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
+
+        TidbitsBlocks.init();
+        TidbitsVillagers.init();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -44,6 +68,11 @@ public class Tidbits
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+        event.enqueueWork(() -> {
+            TidbitsConfiguredFeatures.registerConfiguredFeatures();
+        });
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -79,6 +108,59 @@ public class Tidbits
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here
             LOGGER.info("HELLO from Register Block");
+        }
+    }
+    @Mod.EventBusSubscriber(modid = "tidbits")
+    public static class ModEvents {
+
+        @SubscribeEvent
+        public static void onBiomeLoad(BiomeLoadingEvent event) {
+            event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> TidbitsConfiguredFeatures.CONFIGURED_FLINT_ORE);
+
+
+            if (event.getCategory().equals(Biome.Category.NETHER)) {
+                event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> TidbitsConfiguredFeatures.CONFIGURED_SULFUR_ORE);
+
+            }
+        }
+
+        @SubscribeEvent
+        public static void villagerTrades(final VillagerTradesEvent event) {
+            if (event.getType() == TidbitsVillagers.DISC_JOCKEY.get()) {
+                for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:music_discs")).getValues()) {
+                    event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 4), 5, 10, 0.05F));
+                    event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 8), 5, 10, 0.05F));
+                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 12), 5, 10, 0.05F));
+                    event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 16), 5, 10, 0.05F));
+                    event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 20), 5, 10, 0.05F));
+
+                }
+            }
+
+            if (event.getType() == TidbitsVillagers.LUMBERJACK.get()) {
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.IRON_AXE, 1), new ItemStack(Items.EMERALD, 5), 2, 10, 0.05F));
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.STONE_AXE, 1), new ItemStack(Items.EMERALD, 3), 2, 10, 0.05F));
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.IRON_HOE, 1), new ItemStack(Items.EMERALD, 3), 1, 10, 0.05F));
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.STONE_HOE, 1), new ItemStack(Items.EMERALD, 2), 1, 10, 0.05F));
+
+                for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:logs")).getValues()) {
+                    event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(i, 8), 16, 10, 0.05F));
+                }
+
+                for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:planks")).getValues()) {
+                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(i, 32), 4, 10, 0.05F));
+                }
+
+                for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:leaves")).getValues()) {
+                    event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(i, 32), 4, 10, 0.05F));
+                }
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Blocks.NETHER_WART_BLOCK, 10), 4, 10, 0.05F));
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Blocks.WARPED_WART_BLOCK, 10), 4, 10, 0.05F));
+
+                for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:saplings")).getValues()) {
+                    event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(i, 1), 4, 10, 0.05F));
+                }
+            }
         }
     }
 }
