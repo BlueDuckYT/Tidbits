@@ -138,13 +138,15 @@ public class Tidbits
         public static void villagerTrades(final VillagerTradesEvent event) {
             if (event.getType() == TidbitsVillagers.DISC_JOCKEY.get()) {
                 for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:music_discs")).getValues()) {
-                    event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 4), 5, 10, 0.05F));
-                    event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 8), 5, 10, 0.05F));
+                    event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 8), 5, 10, 0.05F));
                     event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 12), 5, 10, 0.05F));
                     event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 16), 5, 10, 0.05F));
-                    event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 20), 5, 10, 0.05F));
+                    event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 64), new ItemStack(i, 1), 5, 10, 0.05F));
 
                 }
+                event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.NOTE_BLOCK, 2), new ItemStack(Items.EMERALD, 3), 5, 10, 0.05F));
+                event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.JUKEBOX, 1), new ItemStack(Items.EMERALD, 8), 5, 10, 0.05F));
+
             }
 
             if (event.getType() == TidbitsVillagers.LUMBERJACK.get()) {

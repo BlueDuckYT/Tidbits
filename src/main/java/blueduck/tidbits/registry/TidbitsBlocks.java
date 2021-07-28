@@ -19,6 +19,13 @@ public class TidbitsBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Tidbits.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Tidbits.MODID);
 
+    public static final RegistryObject<Block> CHARCOAL_BLOCK = BLOCKS.register("charcoal_block", () -> new Block(Block.Properties.copy(Blocks.COAL_BLOCK)));
+    public static final RegistryObject<Item> CHARCOAL_BLOCK_ITEM = ITEMS.register("charcoal_block", () -> new BlockItem(CHARCOAL_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
+
+    public static final RegistryObject<Block> SULFUR_BLOCK = BLOCKS.register("sulfur_block", () -> new Block(Block.Properties.copy(Blocks.COAL_BLOCK)));
+    public static final RegistryObject<Item> SULFUR_BLOCK_ITEM = ITEMS.register("sulfur_block", () -> new BlockItem(SULFUR_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
+
+
     public static final RegistryObject<Block> FLINT_ORE = BLOCKS.register("flint_ore", () -> new FallingBlock(Block.Properties.copy(Blocks.GRAVEL).harvestTool(ToolType.SHOVEL)));
     public static final RegistryObject<Item> FLINT_ORE_ITEM = ITEMS.register("flint_ore", () -> new BlockItem(FLINT_ORE.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
 
