@@ -15,6 +15,16 @@ public class TidbitsVillagers {
     public static final DeferredRegister<VillagerProfession> PROFESSIONS = DeferredRegister.create(ForgeRegistries.PROFESSIONS, Tidbits.MODID);
     public static final DeferredRegister<PointOfInterestType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, Tidbits.MODID);
 
+    public static final RegistryObject<PointOfInterestType> ENGINEER_POI = POI_TYPES.register("engineer",
+            () -> new PointOfInterestType("engineer", PointOfInterestType.getBlockStates(TidbitsBlocks.REDSTONE_WORKBENCH.get()), 1, 1)
+    );
+
+    public static final RegistryObject<VillagerProfession> ENGINEER = PROFESSIONS.register("engineer",
+            () -> new VillagerProfession("engineer", ENGINEER_POI.get(),
+                    ImmutableSet.of(),
+                    ImmutableSet.of(TidbitsBlocks.REDSTONE_WORKBENCH.get()), null)
+    );
+
     public static final RegistryObject<PointOfInterestType> LUMBERJACK_POI = POI_TYPES.register("lumberjack",
             () -> new PointOfInterestType("lumberjack", PointOfInterestType.getBlockStates(TidbitsBlocks.LUMBERJACK_WORKSTATION.get()), 1, 1)
     );

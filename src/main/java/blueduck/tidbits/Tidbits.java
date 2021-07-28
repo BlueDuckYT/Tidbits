@@ -152,7 +152,7 @@ public class Tidbits
                 }
 
                 for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:leaves")).getValues()) {
-                    event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(i, 32), 4, 10, 0.05F));
+                    event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(i, 16), 4, 10, 0.05F));
                 }
                 event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Blocks.NETHER_WART_BLOCK, 10), 4, 10, 0.05F));
                 event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Blocks.WARPED_WART_BLOCK, 10), 4, 10, 0.05F));
@@ -161,6 +161,32 @@ public class Tidbits
                     event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(i, 1), 4, 10, 0.05F));
                 }
             }
+
+
+            if (event.getType() == TidbitsVillagers.ENGINEER.get()) {
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.REDSTONE, 12), new ItemStack(Items.EMERALD, 1), 8, 10, 0.05F));
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.REDSTONE_TORCH, 3), new ItemStack(Items.EMERALD, 1), 4, 10, 0.05F));
+
+                event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(Items.TARGET, 1), 9, 10, 0.05F));
+                event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(Items.REDSTONE_LAMP, 1), 12, 10, 0.05F));
+                event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Items.NOTE_BLOCK, 1), 8, 10, 0.05F));
+
+                event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(Items.HOPPER, 1), 8, 10, 0.05F));
+                event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 5), new ItemStack(Items.DISPENSER, 1), 5, 10, 0.05F));
+                event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(Items.DROPPER, 1), 5, 10, 0.05F));
+
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(Items.REPEATER, 1), 8, 10, 0.05F));
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(Items.COMPARATOR, 1), 8, 10, 0.05F));
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 6), new ItemStack(Items.DAYLIGHT_DETECTOR, 1), 8, 10, 0.05F));
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(Items.OBSERVER, 1), 8, 10, 0.05F));
+
+                event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(Items.PISTON, 1), 8, 10, 0.05F));
+                event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(Items.STICKY_PISTON, 1), 8, 10, 0.05F));
+                event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 6), new ItemStack(Items.SLIME_BLOCK, 1), 10, 10, 0.05F));
+                event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(Items.HONEY_BLOCK, 1), 10, 10, 0.05F));
+
+            }
+
         }
     }
 }

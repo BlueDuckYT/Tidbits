@@ -25,6 +25,9 @@ public class TidbitsBlocks {
     public static final RegistryObject<Block> SULFUR_ORE = BLOCKS.register("sulfur_ore", () -> new TidbitsOreBlock(Block.Properties.copy(Blocks.NETHER_GOLD_ORE)));
     public static final RegistryObject<Item> SULFUR_ORE_ITEM = ITEMS.register("sulfur_ore", () -> new BlockItem(SULFUR_ORE.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
 
+    public static final RegistryObject<Block> REDSTONE_WORKBENCH = BLOCKS.register("redstone_workbench", () -> new Block(Block.Properties.copy(Blocks.CARTOGRAPHY_TABLE)));
+    public static final RegistryObject<Item> REDSTONE_WORKBENCH_ITEM = ITEMS.register("redstone_workbench", () -> new BlockItem(REDSTONE_WORKBENCH.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS)));
+
     public static final RegistryObject<Block> LUMBERJACK_WORKSTATION = BLOCKS.register("lumberstation", () -> new Block(Block.Properties.copy(Blocks.CARTOGRAPHY_TABLE)));
     public static final RegistryObject<Item> LUMBERJACK_WORKSTATION_ITEM = ITEMS.register("lumberstation", () -> new BlockItem(LUMBERJACK_WORKSTATION.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS)));
 
