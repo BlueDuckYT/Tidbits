@@ -2,6 +2,7 @@ package blueduck.tidbits.registry;
 
 import blueduck.tidbits.Tidbits;
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.village.PointOfInterestType;
@@ -9,6 +10,8 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Supplier;
 
 public class TidbitsVillagers {
 
@@ -19,30 +22,30 @@ public class TidbitsVillagers {
             () -> new PointOfInterestType("engineer", PointOfInterestType.getBlockStates(TidbitsBlocks.REDSTONE_WORKBENCH.get()), 1, 1)
     );
 
-    public static final RegistryObject<VillagerProfession> ENGINEER = PROFESSIONS.register("engineer",
+    public static final RegistryObject<VillagerProfession> ENGINEER = condRegister("engineer",
             () -> new VillagerProfession("engineer", ENGINEER_POI.get(),
                     ImmutableSet.of(),
-                    ImmutableSet.of(TidbitsBlocks.REDSTONE_WORKBENCH.get()), null)
+                    ImmutableSet.of(TidbitsBlocks.REDSTONE_WORKBENCH.get()), null), () -> Tidbits.CONFIG.ENGINEER.get()
     );
 
     public static final RegistryObject<PointOfInterestType> LUMBERJACK_POI = POI_TYPES.register("lumberjack",
             () -> new PointOfInterestType("lumberjack", PointOfInterestType.getBlockStates(TidbitsBlocks.LUMBERJACK_WORKSTATION.get()), 1, 1)
     );
 
-    public static final RegistryObject<VillagerProfession> LUMBERJACK = PROFESSIONS.register("lumberjack",
+    public static final RegistryObject<VillagerProfession> LUMBERJACK = condRegister("lumberjack",
             () -> new VillagerProfession("lumberjack", LUMBERJACK_POI.get(),
                     ImmutableSet.of(),
-                    ImmutableSet.of(TidbitsBlocks.LUMBERJACK_WORKSTATION.get()), null)
+                    ImmutableSet.of(TidbitsBlocks.LUMBERJACK_WORKSTATION.get()), null), () -> Tidbits.CONFIG.LUMBERJACK.get()
     );
 
     public static final RegistryObject<PointOfInterestType> DISC_JOCKEY_POI = POI_TYPES.register("disc_jockey",
             () -> new PointOfInterestType("disc_jockey", PointOfInterestType.getBlockStates(Blocks.JUKEBOX), 1, 1)
     );
 
-    public static final RegistryObject<VillagerProfession> DISC_JOCKEY = PROFESSIONS.register("disc_jockey",
+    public static final RegistryObject<VillagerProfession> DISC_JOCKEY = condRegister("disc_jockey",
             () -> new VillagerProfession("disc_jockey", DISC_JOCKEY_POI.get(),
                     ImmutableSet.of(),
-                    ImmutableSet.of(Blocks.JUKEBOX), null)
+                    ImmutableSet.of(Blocks.JUKEBOX), null), () -> Tidbits.CONFIG.DISC_JOCKEY.get()
     );
 
     public static void init() {
@@ -50,4 +53,9 @@ public class TidbitsVillagers {
         POI_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
+    public static RegistryObject<VillagerProfession> condRegister (String registryName, Supplier<VillagerProfession> profession, Supplier<Boolean> condition) {
+        if (condition.get())
+            return PROFESSIONS.register(registryName, profession);
+        return null;
+    }
 }

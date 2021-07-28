@@ -1,5 +1,7 @@
 package blueduck.tidbits;
 
+import blueduck.tidbits.config.ConfigHelper;
+import blueduck.tidbits.config.TidbitsConfig;
 import blueduck.tidbits.registry.TidbitsBlocks;
 import blueduck.tidbits.registry.TidbitsConfiguredFeatures;
 import blueduck.tidbits.registry.TidbitsVillagers;
@@ -26,6 +28,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
@@ -44,9 +47,14 @@ public class Tidbits
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
+    public static TidbitsConfig CONFIG;
+
     public static String MODID = "tidbits";
 
     public Tidbits() {
+
+        CONFIG = ConfigHelper.register(ModConfig.Type.COMMON, TidbitsConfig::new);
+
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -115,10 +123,12 @@ public class Tidbits
 
         @SubscribeEvent
         public static void onBiomeLoad(BiomeLoadingEvent event) {
-            event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> TidbitsConfiguredFeatures.CONFIGURED_FLINT_ORE);
+            if (Tidbits.CONFIG.FLINT_ORE.get()) {
+                event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> TidbitsConfiguredFeatures.CONFIGURED_FLINT_ORE);
+            }
 
 
-            if (event.getCategory().equals(Biome.Category.NETHER)) {
+            if (event.getCategory().equals(Biome.Category.NETHER) && Tidbits.CONFIG.SULFUR_ORE.get()) {
                 event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> TidbitsConfiguredFeatures.CONFIGURED_SULFUR_ORE);
 
             }
