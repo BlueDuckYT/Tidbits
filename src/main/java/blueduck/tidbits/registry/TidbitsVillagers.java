@@ -29,13 +29,13 @@ public class TidbitsVillagers {
     );
 
     public static final RegistryObject<PointOfInterestType> LUMBERJACK_POI = POI_TYPES.register("lumberjack",
-            () -> new PointOfInterestType("lumberjack", PointOfInterestType.getBlockStates(TidbitsBlocks.LUMBERJACK_WORKSTATION.get()), 1, 1)
+            () -> new PointOfInterestType("lumberjack", PointOfInterestType.getBlockStates(TidbitsBlocks.LOG_SPLITTING_TABLE.get()), 1, 1)
     );
 
     public static final RegistryObject<VillagerProfession> LUMBERJACK = condRegister("lumberjack",
             () -> new VillagerProfession("lumberjack", LUMBERJACK_POI.get(),
                     ImmutableSet.of(),
-                    ImmutableSet.of(TidbitsBlocks.LUMBERJACK_WORKSTATION.get()), null), () -> Tidbits.CONFIG.LUMBERJACK.get()
+                    ImmutableSet.of(TidbitsBlocks.LOG_SPLITTING_TABLE.get()), null), () -> Tidbits.CONFIG.LUMBERJACK.get()
     );
 
     public static final RegistryObject<PointOfInterestType> DISC_JOCKEY_POI = POI_TYPES.register("disc_jockey",
