@@ -2,12 +2,17 @@
   "block.tidbits.flint_ore": "Flint Ore",
   "block.tidbits.sulfur_ore": "Nether Sulfur Ore",
   "block.tidbits.sulfur_block": "Sulfur Block",
+  "block.tidbits.charcoal_block": "Charcoal Block",
+
+  "item.tidbits.sulfur": "Sulfur",
 
   "block.tidbits.log_splitting_table": "Log Splitting Table",
   "block.tidbits.redstone_workbench": "Redstone Workbench",
+  "block.tidbits.blueprint_table": "Blueprint Table",
 
 
   "entity.minecraft.villager.tidbits.engineer": "Engineer",
   "entity.minecraft.villager.tidbits.lumberjack": "Lumberjack",
+  "entity.minecraft.villager.tidbits.contractor": "Contractor",
   "entity.minecraft.villager.tidbits.disc_jockey": "Disc Jockey"
 }

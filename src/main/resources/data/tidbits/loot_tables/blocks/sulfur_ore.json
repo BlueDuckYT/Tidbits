@@ -46,7 +46,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "minecraft:gunpowder"
+              "name": "tidbits:sulfur"
             }
           ]
         }

@@ -38,6 +38,16 @@ public class TidbitsVillagers {
                     ImmutableSet.of(TidbitsBlocks.LOG_SPLITTING_TABLE.get()), null), () -> Tidbits.CONFIG.LUMBERJACK.get()
     );
 
+    public static final RegistryObject<PointOfInterestType> CONTRACTOR_POI = POI_TYPES.register("contractor",
+            () -> new PointOfInterestType("contractor", PointOfInterestType.getBlockStates(TidbitsBlocks.BLUEPRINT_TABLE.get()), 1, 1)
+    );
+
+    public static final RegistryObject<VillagerProfession> CONTRACTOR = condRegister("contractor",
+            () -> new VillagerProfession("contractor", CONTRACTOR_POI.get(),
+                    ImmutableSet.of(),
+                    ImmutableSet.of(TidbitsBlocks.BLUEPRINT_TABLE.get()), null), () -> Tidbits.CONFIG.CONTRACTOR.get()
+    );
+
     public static final RegistryObject<PointOfInterestType> DISC_JOCKEY_POI = POI_TYPES.register("disc_jockey",
             () -> new PointOfInterestType("disc_jockey", PointOfInterestType.getBlockStates(Blocks.JUKEBOX), 1, 1)
     );
