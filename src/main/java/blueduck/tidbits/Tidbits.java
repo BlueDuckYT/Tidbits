@@ -207,7 +207,7 @@ public class Tidbits
 
             if (CONFIG.CONTRACTOR.get() && event.getType() == TidbitsVillagers.CONTRACTOR.get()) {
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.BRICK, 8), new ItemStack(Items.EMERALD, 1), 8, 10, 0.05F));
-                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.NETHER_BRICK, 8), new ItemStack(Items.EMERALD, 1), 4, 10, 0.05F));
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.NETHER_BRICK, 8), new ItemStack(Items.EMERALD, 1), 6, 10, 0.05F));
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.CHAIN, 4), new ItemStack(Items.EMERALD, 1), 6, 10, 0.05F));
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.COBBLESTONE, 24), new ItemStack(Items.EMERALD, 1), 4, 10, 0.05F));
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.BLACKSTONE, 16), new ItemStack(Items.EMERALD, 1), 4, 10, 0.05F));
@@ -237,24 +237,69 @@ public class Tidbits
                 event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Items.SMOOTH_SANDSTONE, 12), 8, 10, 0.05F));
                 event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Items.SMOOTH_RED_SANDSTONE, 12), 12, 10, 0.05F));
                 event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Items.SMOOTH_STONE, 12), 12, 10, 0.05F));
+                event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Items.GLASS, 8), 16, 10, 0.05F));
 
 
                 if (ModList.get().isLoaded("dustrial_decor")) {
-                    event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:cinder_block")), 4), new ItemStack(Items.EMERALD, 1), 16, 10, 0.05F));
-                    event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal")), 3), new ItemStack(Items.EMERALD, 1), 16, 10, 0.05F));
+                    try {
+                        event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:cinder_block")), 4), new ItemStack(Items.EMERALD, 1), 16, 10, 0.05F));
+                        event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal")), 3), new ItemStack(Items.EMERALD, 1), 16, 10, 0.05F));
 
 
-                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:cinder_bricks")), 8), 16, 10, 0.05F));
-                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_siding")), 8), 16, 10, 0.05F));
-                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_walling")), 8), 16, 10, 0.05F));
-                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_treading")), 8), 16, 10, 0.05F));
-                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_paneling")), 8), 16, 10, 0.05F));
-                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:wrapped_chains")), 1), 12, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:cinder_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_siding")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_walling")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_treading")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal_paneling")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:wrapped_chains")), 1), 12, 10, 0.05F));
+                    }
+                    catch(Exception e) {
 
+                    }
+                }
+
+                if (ModList.get().isLoaded("infernalexp")) {
+                    try {
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("infernalexp:glowstone_bricks")), 4), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("infernalexp:dimstone_bricks")), 4), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("infernalexp:dullstone_bricks")), 4), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("infernalexp:basalt_bricks")), 4), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("infernalexp:soul_stone_bricks")), 4), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("infernalexp:glowdust_stone_bricks")), 4), 16, 10, 0.05F));
+                    }
+                    catch(Exception e) {
+
+                    }
 
                 }
-            }
 
-        }
+                if (ModList.get().isLoaded("quark")) {
+                    try {
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:sandstone_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:red_sandstone_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:soul_sandstone_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:blackstone_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:granite_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:andesite_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:diorite_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:marble_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:jasper_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:limestone_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:slate_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:deepslate_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:basalt_bricks")), 8), 16, 10, 0.05F));
+                        if (ModList.get().isLoaded("environmental")) {
+                            event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("environmental:arid_sandstone_bricks")), 8), 16, 10, 0.05F));
+                            event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("environmental:red_arid_sandstone_bricks")), 8), 16, 10, 0.05F));
+                        }
+                    }
+                    catch(Exception e) {
+
+                    }
+
+                }
+
+            }
+            }
     }
 }
