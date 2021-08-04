@@ -13,6 +13,10 @@ public class TidbitsConfig {
     public ConfigHelper.ConfigValueListener<Boolean> FLINT_ORE;
     public ConfigHelper.ConfigValueListener<Boolean> SULFUR_ORE;
 
+    public ConfigHelper.ConfigValueListener<Boolean> PRISMARINE_IN_OCEANS;
+
+    public ConfigHelper.ConfigValueListener<Boolean> CHARCOAL_BLOCK;
+
 
     public TidbitsConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber) {
         builder.push("General");
@@ -41,6 +45,24 @@ public class TidbitsConfig {
         this.SULFUR_ORE= subscriber.subscribe(builder
                 .comment("Enable Sulfur Ore?")
                 .define("sulfur_ore", true, o -> o instanceof Boolean));
+
+
+        builder.pop();
+        builder.push("Worldgen");
+
+        this.PRISMARINE_IN_OCEANS= subscriber.subscribe(builder
+                .comment("Enable Prismarine spawning in Ocean biomes?")
+                .define("prismarine_oceans", true, o -> o instanceof Boolean));
+
+        builder.pop();
+
+        builder.push("Miscellaneous");
+
+        this.CHARCOAL_BLOCK= subscriber.subscribe(builder
+                .comment("Enable Charcoal Blocks?")
+                .define("charcoal_block", true, o -> o instanceof Boolean));
+
+        builder.pop();
 
         builder.pop();
     }

@@ -136,7 +136,10 @@ public class Tidbits
 
             if (event.getCategory().equals(Biome.Category.NETHER) && Tidbits.CONFIG.SULFUR_ORE.get()) {
                 event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> TidbitsConfiguredFeatures.CONFIGURED_SULFUR_ORE);
+            }
 
+            if (event.getCategory().equals(Biome.Category.OCEAN) && Tidbits.CONFIG.PRISMARINE_IN_OCEANS.get()) {
+                event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_ORES).add(() -> TidbitsConfiguredFeatures.CONFIGURED_PRISMARINE_OCEAN_STONE);
             }
         }
 
@@ -217,7 +220,7 @@ public class Tidbits
 
                 for (int i = 0; i < powders.size(); i++) {
                     int finalI = i;
-                    event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(powders.get(finalI), 16), new ItemStack(Items.EMERALD, 1), new ItemStack(concrete.get(finalI), 16), 8, 10, 0.05F));
+                    event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(powders.get(finalI), 16), new ItemStack(Items.EMERALD, 1), new ItemStack(concrete.get(finalI), 16), 8, 25, 0.05F));
                 }
 
                 event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(Items.BRICKS, 4), 16, 10, 0.05F));

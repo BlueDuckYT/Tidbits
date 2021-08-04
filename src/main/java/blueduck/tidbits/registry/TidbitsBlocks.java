@@ -16,13 +16,15 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.function.Supplier;
+
 public class TidbitsBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Tidbits.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Tidbits.MODID);
 
-    public static final RegistryObject<Block> CHARCOAL_BLOCK = BLOCKS.register("charcoal_block", () -> new Block(Block.Properties.copy(Blocks.COAL_BLOCK)));
-    public static final RegistryObject<Item> CHARCOAL_BLOCK_ITEM = ITEMS.register("charcoal_block", () -> new BlockItem(CHARCOAL_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
+    public static final RegistryObject<Block> CHARCOAL_BLOCK = conditionallyRegisterBlock("charcoal_block", () -> new Block(Block.Properties.copy(Blocks.COAL_BLOCK)), () -> Tidbits.CONFIG.CHARCOAL_BLOCK.get());
+    public static final RegistryObject<Item> CHARCOAL_BLOCK_ITEM = conditionallyRegisterItem("charcoal_block", () -> new BlockItem(CHARCOAL_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)), () -> Tidbits.CONFIG.CHARCOAL_BLOCK.get());
 
     public static final RegistryObject<Block> SULFUR_BLOCK = BLOCKS.register("sulfur_block", () -> new SulfurBlock(Block.Properties.copy(Blocks.COAL_BLOCK)));
     public static final RegistryObject<Item> SULFUR_BLOCK_ITEM = ITEMS.register("sulfur_block", () -> new BlockItem(SULFUR_BLOCK.get(), new Item.Properties().tab(ItemGroup.TAB_BUILDING_BLOCKS)));
@@ -51,6 +53,17 @@ public class TidbitsBlocks {
     public static void init() {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    }
+
+    public static RegistryObject<Item> conditionallyRegisterItem(String registryName, Supplier<Item> item, Supplier<Boolean> condition) {
+        if (condition.get())
+            return ITEMS.register(registryName, item);
+        return null;
+    }
+    public static RegistryObject<Block> conditionallyRegisterBlock(String registryName, Supplier<Block> block, Supplier<Boolean> condition) {
+        if (condition.get())
+            return BLOCKS.register(registryName, block);
+        return null;
     }
 
 }

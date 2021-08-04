@@ -20,6 +20,9 @@ public class TidbitsConfiguredFeatures {
     public static final ConfiguredFeature<?, ?> CONFIGURED_SULFUR_ORE = Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.NETHERRACK), TidbitsBlocks.SULFUR_ORE.get().defaultBlockState(), 5)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(5, 5, 128)))
             .squared()
             .count(15);
+    public static final ConfiguredFeature<?, ?> CONFIGURED_PRISMARINE_OCEAN_STONE = Feature.ORE.configured(new OreFeatureConfig(new BlockMatchRuleTest(Blocks.STONE), Blocks.PRISMARINE.defaultBlockState(), 33)).decorated(Placement.RANGE.configured(new TopSolidRangeConfig(5, 5, 72)))
+            .squared()
+            .count(16);
 
     public static void registerConfiguredFeatures() {
         Registry<ConfiguredFeature<?, ?>> registry = WorldGenRegistries.CONFIGURED_FEATURE;

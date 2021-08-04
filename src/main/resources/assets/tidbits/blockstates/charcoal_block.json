@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "tidbits:block/sulfur_block" }
+    "": { "model": "tidbits:block/charcoal_block" }
   }
 }

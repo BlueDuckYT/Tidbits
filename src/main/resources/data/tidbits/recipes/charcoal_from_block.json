@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "item": "tidbits:charcoal_block",
+          "type": "forge:item_exists"
+        }
+      ],
+
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "#"
+        ],
+        "key": {
+          "#": {
+            "item": "tidbits:charcoal_block"
+          }
+        },
+        "result": {
+          "item": "minecraft:charcoal",
+          "count": "9"
+        }
+      }
+    }
+  ]
+}
