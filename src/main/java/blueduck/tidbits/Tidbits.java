@@ -6,8 +6,11 @@ import blueduck.tidbits.registry.TidbitsBlocks;
 import blueduck.tidbits.registry.TidbitsConfiguredFeatures;
 import blueduck.tidbits.registry.TidbitsItems;
 import blueduck.tidbits.registry.TidbitsVillagers;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -82,6 +85,29 @@ public class Tidbits
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+
+
+        if (CONFIG.VILLAGER_EAT_PRODUCE.get()) {
+            ImmutableMap.Builder<Item, Integer> FOOD_VALUES_BUILDER = ImmutableMap.builder();
+            ImmutableSet.Builder<Item> ALLOWED_ITEMS_BUILDER = ImmutableSet.builder();
+
+            VillagerEntity.FOOD_POINTS = FOOD_VALUES_BUILDER.putAll(VillagerEntity.FOOD_POINTS).put(Items.APPLE, 2).put(Items.MELON_SLICE, 1).build();
+            VillagerEntity.WANTED_ITEMS = ALLOWED_ITEMS_BUILDER.addAll(VillagerEntity.WANTED_ITEMS).add(Items.APPLE).add(Items.MELON_SLICE).build();
+        }
+        if (CONFIG.VILLAGER_EAT_BAKED_GOODS.get()) {
+            ImmutableMap.Builder<Item, Integer> FOOD_VALUES_BUILDER = ImmutableMap.builder();
+            ImmutableSet.Builder<Item> ALLOWED_ITEMS_BUILDER = ImmutableSet.builder();
+
+            VillagerEntity.FOOD_POINTS = FOOD_VALUES_BUILDER.putAll(VillagerEntity.FOOD_POINTS).put(Items.CAKE, 12).put(Items.PUMPKIN_PIE, 8).put(Items.COOKIE, 2).build();
+            VillagerEntity.WANTED_ITEMS = ALLOWED_ITEMS_BUILDER.addAll(VillagerEntity.WANTED_ITEMS).add(Items.CAKE).add(Items.PUMPKIN_PIE).add(Items.COOKIE).build();
+        }
+        if (CONFIG.VILLAGER_EAT_GOLDEN_FOOD.get()) {
+            ImmutableMap.Builder<Item, Integer> FOOD_VALUES_BUILDER = ImmutableMap.builder();
+            ImmutableSet.Builder<Item> ALLOWED_ITEMS_BUILDER = ImmutableSet.builder();
+
+            VillagerEntity.FOOD_POINTS = FOOD_VALUES_BUILDER.putAll(VillagerEntity.FOOD_POINTS).put(Items.GOLDEN_APPLE, 24).put(Items.ENCHANTED_GOLDEN_APPLE, 120).put(Items.GOLDEN_CARROT, 24).build();
+            VillagerEntity.WANTED_ITEMS = ALLOWED_ITEMS_BUILDER.addAll(VillagerEntity.WANTED_ITEMS).add(Items.GOLDEN_APPLE).add(Items.ENCHANTED_GOLDEN_APPLE).add(Items.GOLDEN_CARROT).build();
+        }
 
         event.enqueueWork(() -> {
             TidbitsConfiguredFeatures.registerConfiguredFeatures();

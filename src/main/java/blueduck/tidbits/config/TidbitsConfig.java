@@ -17,6 +17,10 @@ public class TidbitsConfig {
 
     public ConfigHelper.ConfigValueListener<Boolean> CHARCOAL_BLOCK;
 
+    public ConfigHelper.ConfigValueListener<Boolean> VILLAGER_EAT_PRODUCE;
+    public ConfigHelper.ConfigValueListener<Boolean> VILLAGER_EAT_BAKED_GOODS;
+    public ConfigHelper.ConfigValueListener<Boolean> VILLAGER_EAT_GOLDEN_FOOD;
+
 
     public TidbitsConfig(ForgeConfigSpec.Builder builder, ConfigHelper.Subscriber subscriber) {
         builder.push("General");
@@ -61,6 +65,20 @@ public class TidbitsConfig {
         this.CHARCOAL_BLOCK= subscriber.subscribe(builder
                 .comment("Enable Charcoal Blocks?")
                 .define("charcoal_block", true, o -> o instanceof Boolean));
+
+        builder.push("Villager Breeding Foods");
+
+        this.VILLAGER_EAT_PRODUCE= subscriber.subscribe(builder
+                .comment("Enable Villagers eating Apples and Melons?")
+                .define("villager_produce", true, o -> o instanceof Boolean));
+        this.VILLAGER_EAT_BAKED_GOODS= subscriber.subscribe(builder
+                .comment("Enable Villagers eating Baked Goods?")
+                .define("villager_baked_goods", true, o -> o instanceof Boolean));
+        this.VILLAGER_EAT_BAKED_GOODS= subscriber.subscribe(builder
+                .comment("Enable Villagers being able to instantly breed when fed a golden food item?")
+                .define("villager_golden_food", true, o -> o instanceof Boolean));
+
+        builder.pop();
 
         builder.pop();
 
