@@ -10,24 +10,41 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.CreatureEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.merchant.villager.VillagerEntity;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
+import net.minecraft.entity.monster.CaveSpiderEntity;
+import net.minecraft.entity.monster.HoglinEntity;
+import net.minecraft.entity.monster.SpiderEntity;
+import net.minecraft.entity.monster.ZombieEntity;
+import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.fish.AbstractFishEntity;
+import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.PointOfInterestType;
+import net.minecraft.world.IServerWorld;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStage;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -150,6 +167,22 @@ public class Tidbits
             LOGGER.info("HELLO from Register Block");
         }
     }
+
+    @SubscribeEvent
+    public static void onSpawnEntity(LivingSpawnEvent.SpecialSpawn event) {
+        if (!event.getWorld().isClientSide()) {
+            if (CONFIG.CAVE_JOCKEY.get() && (event.getWorld().getRandom().nextDouble() < 0.075) && (event.getEntity() instanceof ZombieEntity && ((ZombieEntity) event.getEntity()).isBaby() && event.getEntity().getY() <= 56)) {
+                CaveSpiderEntity entity = EntityType.CAVE_SPIDER.create((World) event.getWorld());
+                entity.moveTo(event.getX(), event.getY(), event.getZ(), event.getEntity().yRotO, 0.0F);
+                entity.finalizeSpawn((IServerWorld) event.getWorld(), event.getWorld().getCurrentDifficultyAt(new BlockPos(event.getX(), event.getY(), event.getZ())), SpawnReason.JOCKEY, (ILivingEntityData) null, (CompoundNBT) null);
+                event.getEntity().startRiding(entity);
+
+            }
+
+        }
+    }
+
+
     @Mod.EventBusSubscriber(modid = "tidbits")
     public static class ModEvents {
 
@@ -222,8 +255,8 @@ public class Tidbits
                 event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 5), new ItemStack(Items.DISPENSER, 1), 5, 10, 0.05F));
                 event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(Items.DROPPER, 1), 5, 10, 0.05F));
 
-                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(Items.REPEATER, 1), 8, 10, 0.05F));
-                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(Items.COMPARATOR, 1), 8, 10, 0.05F));
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(Items.REPEATER, 1), 8, 10, 0.05F));
+                event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 3), new ItemStack(Items.COMPARATOR, 1), 8, 10, 0.05F));
                 event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 6), new ItemStack(Items.DAYLIGHT_DETECTOR, 1), 8, 10, 0.05F));
                 event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 4), new ItemStack(Items.OBSERVER, 1), 8, 10, 0.05F));
 
@@ -307,7 +340,6 @@ public class Tidbits
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:sandstone_bricks")), 8), 16, 10, 0.05F));
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:red_sandstone_bricks")), 8), 16, 10, 0.05F));
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:soul_sandstone_bricks")), 8), 16, 10, 0.05F));
-                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:blackstone_bricks")), 8), 16, 10, 0.05F));
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:granite_bricks")), 8), 16, 10, 0.05F));
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:andesite_bricks")), 8), 16, 10, 0.05F));
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:diorite_bricks")), 8), 16, 10, 0.05F));
@@ -317,9 +349,14 @@ public class Tidbits
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:slate_bricks")), 8), 16, 10, 0.05F));
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:deepslate_bricks")), 8), 16, 10, 0.05F));
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:basalt_bricks")), 8), 16, 10, 0.05F));
+                        event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("quark:blue_nether_bricks")), 8), 16, 10, 0.05F));
                         if (ModList.get().isLoaded("environmental")) {
                             event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("environmental:arid_sandstone_bricks")), 8), 16, 10, 0.05F));
                             event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("environmental:red_arid_sandstone_bricks")), 8), 16, 10, 0.05F));
+
+                            event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("environmental:smooth_arid_sandstone")), 8), 16, 10, 0.05F));
+                            event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("environmental:smooth_red_arid_sandstone")), 8), 16, 10, 0.05F));
+
                         }
                     }
                     catch(Exception e) {

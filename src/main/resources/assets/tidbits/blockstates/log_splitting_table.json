@@ -1,5 +1,22 @@
 {
   "variants": {
-    "": { "model": "tidbits:block/log_splitting_table" }
+    "": [
+      {
+        "model": "tidbits:block/log_splitting_table"
+      },
+      {
+        "model": "tidbits:block/log_splitting_table",
+        "y": 90
+      },
+      {
+        "model": "tidbits:block/log_splitting_table",
+        "y": 180
+      },
+      {
+        "model": "tidbits:block/log_splitting_table",
+        "y": 270
+      }
+    ]
+
   }
 }

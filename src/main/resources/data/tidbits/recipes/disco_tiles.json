@@ -4,7 +4,7 @@
     {
       "conditions": [
         {
-          "item": "tidbits:sulfur_block",
+          "item": "tidbits:disco_tiles",
           "type": "forge:item_exists"
         }
       ],
@@ -12,16 +12,24 @@
       "recipe": {
         "type": "minecraft:crafting_shaped",
         "pattern": [
-          "#"
+          "#$#",
+          "$@$",
+          "#$#"
         ],
         "key": {
           "#": {
-            "item": "tidbits:sulfur_block"
+            "tag": "minecraft:ingots/iron"
+          },
+          "$": {
+            "tag": "forge:stained_glass"
+          },
+          "@": {
+            "item": "minecraft:glowstone"
           }
         },
         "result": {
-          "item": "tidbits:sulfur",
-          "count": "9"
+          "item": "tidbits:disco_tiles",
+          "count": 8
         }
       }
     }

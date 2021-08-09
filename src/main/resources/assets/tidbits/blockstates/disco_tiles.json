@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "tidbits:block/disco_tiles/1"
+      },
+      {
+        "model": "tidbits:block/disco_tiles/2"
+      },
+      {
+        "model": "tidbits:block/disco_tiles/3"
+      },
+      {
+        "model": "tidbits:block/disco_tiles/4"
+      },
+      {
+        "model": "tidbits:block/disco_tiles/5"
+      }
+    ]
+
+  }
+}

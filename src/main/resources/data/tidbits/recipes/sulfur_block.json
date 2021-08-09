@@ -1,16 +1,30 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###",
-    "###"
-  ],
-  "key": {
-    "#": {
-      "item": "tidbits:sulfur"
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "item": "tidbits:sulfur_block",
+          "type": "forge:item_exists"
+        }
+      ],
+
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "###",
+          "###",
+          "###"
+        ],
+        "key": {
+          "#": {
+            "item": "tidbits:sulfur"
+          }
+        },
+        "result": {
+          "item": "tidbits:sulfur_block"
+        }
+      }
     }
-  },
-  "result": {
-    "item": "tidbits:sulfur_block"
-  }
+  ]
 }

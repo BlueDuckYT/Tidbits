@@ -16,6 +16,9 @@ public class TidbitsConfig {
     public ConfigHelper.ConfigValueListener<Boolean> PRISMARINE_IN_OCEANS;
 
     public ConfigHelper.ConfigValueListener<Boolean> CHARCOAL_BLOCK;
+    public ConfigHelper.ConfigValueListener<Boolean> DISCO_TILES;
+
+    public ConfigHelper.ConfigValueListener<Boolean> CAVE_JOCKEY;
 
     public ConfigHelper.ConfigValueListener<Boolean> VILLAGER_EAT_PRODUCE;
     public ConfigHelper.ConfigValueListener<Boolean> VILLAGER_EAT_BAKED_GOODS;
@@ -65,6 +68,13 @@ public class TidbitsConfig {
         this.CHARCOAL_BLOCK= subscriber.subscribe(builder
                 .comment("Enable Charcoal Blocks?")
                 .define("charcoal_block", true, o -> o instanceof Boolean));
+        this.DISCO_TILES= subscriber.subscribe(builder
+                .comment("Enable Disco Tiles?")
+                .define("disco_tiles", true, o -> o instanceof Boolean));
+
+        this.CAVE_JOCKEY= subscriber.subscribe(builder
+                .comment("Enable Cave Spider Jockeys in caves?")
+                .define("cave_jockey", true, o -> o instanceof Boolean));
 
         builder.push("Villager Breeding Foods");
 
@@ -74,7 +84,7 @@ public class TidbitsConfig {
         this.VILLAGER_EAT_BAKED_GOODS= subscriber.subscribe(builder
                 .comment("Enable Villagers eating Baked Goods?")
                 .define("villager_baked_goods", true, o -> o instanceof Boolean));
-        this.VILLAGER_EAT_BAKED_GOODS= subscriber.subscribe(builder
+        this.VILLAGER_EAT_GOLDEN_FOOD= subscriber.subscribe(builder
                 .comment("Enable Villagers being able to instantly breed when fed a golden food item?")
                 .define("villager_golden_food", true, o -> o instanceof Boolean));
 

@@ -8,11 +8,11 @@
             {
               "type": "minecraft:item",
               "functions": [
-              {
+                {
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "tidbits:blueprint_table"
+              "name": "tidbits:disco_tiles"
             }
           ]
         }

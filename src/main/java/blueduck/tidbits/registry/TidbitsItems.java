@@ -20,7 +20,7 @@ public class TidbitsItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Tidbits.MODID);
 
 
-    public static final RegistryObject<Item> SULFUR = ITEMS.register("sulfur", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
+    // public static final RegistryObject<Item> SULFUR = ITEMS.register("sulfur", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)));
 
 
     public static void init() {

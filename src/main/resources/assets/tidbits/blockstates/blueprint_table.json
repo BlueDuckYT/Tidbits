@@ -1,5 +1,19 @@
 {
   "variants": {
-    "": { "model": "tidbits:block/blueprint_table" }
+    "facing=east": {
+      "model": "tidbits:block/blueprint_table",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "tidbits:block/blueprint_table",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "tidbits:block/blueprint_table"
+    },
+    "facing=west": {
+      "model": "tidbits:block/blueprint_table",
+      "y": 90
+    }
   }
 }
