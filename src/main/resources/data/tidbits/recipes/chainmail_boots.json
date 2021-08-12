@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "item": "tidbits:chainmail",
+          "type": "forge:item_exists"
+        }
+      ],
+
+      "recipe": {
+        "type": "minecraft:crafting_shaped",
+        "pattern": [
+          "# #",
+          "# #"
+        ],
+        "key": {
+          "#": {
+            "item": "tidbits:chainmail"
+          }
+        },
+        "result": {
+          "item": "minecraft:chainmail_boots"
+        }
+      }
+    }
+  ]
+}

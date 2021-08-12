@@ -214,6 +214,9 @@ public class Tidbits
                 }
                 event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.NOTE_BLOCK, 2), new ItemStack(Items.EMERALD, 3), 5, 10, 0.05F));
                 event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.JUKEBOX, 1), new ItemStack(Items.EMERALD, 8), 5, 10, 0.05F));
+                if (CONFIG.DISCO_TILES.get()) {
+                    event.getTrades().get(2).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 2), new ItemStack(TidbitsBlocks.DISCO_TILES_ITEM.get(), 3), 5, 10, 0.05F));
+                }
 
             }
 

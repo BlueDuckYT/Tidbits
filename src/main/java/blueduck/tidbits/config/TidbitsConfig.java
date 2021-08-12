@@ -16,6 +16,7 @@ public class TidbitsConfig {
     public ConfigHelper.ConfigValueListener<Boolean> PRISMARINE_IN_OCEANS;
 
     public ConfigHelper.ConfigValueListener<Boolean> CHARCOAL_BLOCK;
+    public ConfigHelper.ConfigValueListener<Boolean> CHAINMAIL;
     public ConfigHelper.ConfigValueListener<Boolean> DISCO_TILES;
 
     public ConfigHelper.ConfigValueListener<Boolean> CAVE_JOCKEY;
@@ -63,14 +64,21 @@ public class TidbitsConfig {
 
         builder.pop();
 
-        builder.push("Miscellaneous");
+        builder.push("Blocks and Items");
 
         this.CHARCOAL_BLOCK= subscriber.subscribe(builder
                 .comment("Enable Charcoal Blocks?")
                 .define("charcoal_block", true, o -> o instanceof Boolean));
+        this.CHAINMAIL= subscriber.subscribe(builder
+                .comment("Enable Chainmail?")
+                .define("chainmail", true, o -> o instanceof Boolean));
         this.DISCO_TILES= subscriber.subscribe(builder
                 .comment("Enable Disco Tiles?")
                 .define("disco_tiles", true, o -> o instanceof Boolean));
+
+        builder.pop();
+
+        builder.push("Miscellaneous");
 
         this.CAVE_JOCKEY= subscriber.subscribe(builder
                 .comment("Enable Cave Spider Jockeys in caves?")
