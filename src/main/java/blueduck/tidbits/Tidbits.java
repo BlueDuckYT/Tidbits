@@ -273,7 +273,7 @@ public class Tidbits
             if (CONFIG.CONTRACTOR.get() && event.getType() == TidbitsVillagers.CONTRACTOR.get()) {
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.BRICK, 8), new ItemStack(Items.EMERALD, 1), 8, 10, 0.05F));
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.NETHER_BRICK, 8), new ItemStack(Items.EMERALD, 1), 6, 10, 0.05F));
-                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.CHAIN, 4), new ItemStack(Items.EMERALD, 1), 6, 10, 0.05F));
+                event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.CHAIN, 12), new ItemStack(Items.EMERALD, 1), 6, 10, 0.05F));
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.COBBLESTONE, 24), new ItemStack(Items.EMERALD, 1), 4, 10, 0.05F));
                 event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(Items.BLACKSTONE, 16), new ItemStack(Items.EMERALD, 1), 4, 10, 0.05F));
 
@@ -309,6 +309,7 @@ public class Tidbits
                     try {
                         event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:cinder_block")), 4), new ItemStack(Items.EMERALD, 1), 16, 10, 0.05F));
                         event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:sheet_metal")), 3), new ItemStack(Items.EMERALD, 1), 16, 10, 0.05F));
+                        event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:gold_chain")), 8), new ItemStack(Items.EMERALD, 1), 16, 10, 0.05F));
 
 
                         event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation("dustrial_decor:cinder_bricks")), 8), 16, 10, 0.05F));

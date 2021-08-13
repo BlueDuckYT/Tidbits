@@ -92,15 +92,17 @@ public class TidbitsVillagers {
         SavannaVillagePools.bootstrap();
 
         if (Tidbits.CONFIG.ENGINEER.get()) {
+            addToPool(new ResourceLocation("village/plains/houses"), new ResourceLocation("tidbits:village/engineer_plains"), 8);
+            addToPool(new ResourceLocation("village/desert/houses"), new ResourceLocation("tidbits:village/engineer_desert"), 10);
 
         }
 
         if (Tidbits.CONFIG.LUMBERJACK.get()) {
-            addToPool(new ResourceLocation("village/plains/houses"), new ResourceLocation("tidbits:village/lumberjack_plains"), 40);
-            addToPool(new ResourceLocation("village/snowy/houses"), new ResourceLocation("tidbits:village/lumberjack_snowy"), 50);
+            addToPool(new ResourceLocation("village/plains/houses"), new ResourceLocation("tidbits:village/lumberjack_plains"), 10);
+            addToPool(new ResourceLocation("village/snowy/houses"), new ResourceLocation("tidbits:village/lumberjack_snowy"), 10);
             addToPool(new ResourceLocation("village/taiga/houses"), new ResourceLocation("tidbits:village/lumberjack_taiga"), 30);
-            addToPool(new ResourceLocation("village/desert/houses"), new ResourceLocation("tidbits:village/lumberjack_desert"), 50);
-            addToPool(new ResourceLocation("village/savanna/houses"), new ResourceLocation("tidbits:village/lumberjack_savanna"), 40);
+            addToPool(new ResourceLocation("village/desert/houses"), new ResourceLocation("tidbits:village/lumberjack_desert"), 20);
+            addToPool(new ResourceLocation("village/savanna/houses"), new ResourceLocation("tidbits:village/lumberjack_savanna"), 20);
         }
 
         if (Tidbits.CONFIG.CONTRACTOR.get()) {

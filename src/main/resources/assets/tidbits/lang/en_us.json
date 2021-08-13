@@ -1,11 +1,10 @@
 {
   "block.tidbits.flint_ore": "Flint Ore",
   "block.tidbits.sulfur_ore": "Nether Sulfur Ore",
-  "block.tidbits.sulfur_block": "Sulfur Block",
   "block.tidbits.charcoal_block": "Charcoal Block",
   "block.tidbits.disco_tiles": "Disco Tiles",
 
-  "item.tidbits.sulfur": "Sulfur",
+  "item.tidbits.chainmail": "Chainmail",
 
   "block.tidbits.log_splitting_table": "Log Splitting Table",
   "block.tidbits.redstone_workbench": "Redstone Workbench",
