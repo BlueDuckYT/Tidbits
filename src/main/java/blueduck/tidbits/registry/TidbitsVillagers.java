@@ -94,11 +94,14 @@ public class TidbitsVillagers {
         if (Tidbits.CONFIG.ENGINEER.get()) {
             addToPool(new ResourceLocation("village/plains/houses"), new ResourceLocation("tidbits:village/engineer_plains"), 8);
             addToPool(new ResourceLocation("village/desert/houses"), new ResourceLocation("tidbits:village/engineer_desert"), 10);
+            addToPool(new ResourceLocation("village/savanna/houses"), new ResourceLocation("tidbits:village/engineer_savanna"), 10);
+            addToPool(new ResourceLocation("village/taiga/houses"), new ResourceLocation("tidbits:village/engineer_taiga"), 8);
+            addToPool(new ResourceLocation("village/snowy/houses"), new ResourceLocation("tidbits:village/engineer_snowy"), 8);
 
         }
 
         if (Tidbits.CONFIG.LUMBERJACK.get()) {
-            addToPool(new ResourceLocation("village/plains/houses"), new ResourceLocation("tidbits:village/lumberjack_plains"), 10);
+            addToPool(new ResourceLocation("village/plains/houses"), new ResourceLocation("tidbits:village/lumberjack_plains"), 6);
             addToPool(new ResourceLocation("village/snowy/houses"), new ResourceLocation("tidbits:village/lumberjack_snowy"), 10);
             addToPool(new ResourceLocation("village/taiga/houses"), new ResourceLocation("tidbits:village/lumberjack_taiga"), 30);
             addToPool(new ResourceLocation("village/desert/houses"), new ResourceLocation("tidbits:village/lumberjack_desert"), 20);
@@ -107,6 +110,11 @@ public class TidbitsVillagers {
 
         if (Tidbits.CONFIG.CONTRACTOR.get()) {
 
+            addToPool(new ResourceLocation("village/plains/houses"), new ResourceLocation("tidbits:village/contractor_plains"), 6);
+            addToPool(new ResourceLocation("village/desert/houses"), new ResourceLocation("tidbits:village/contractor_desert"), 16);
+            addToPool(new ResourceLocation("village/savanna/houses"), new ResourceLocation("tidbits:village/contractor_savanna"), 10);
+            addToPool(new ResourceLocation("village/taiga/houses"), new ResourceLocation("tidbits:village/contractor_taiga"), 10);
+            addToPool(new ResourceLocation("village/snowy/houses"), new ResourceLocation("tidbits:village/contractor_snowy"), 10);
         }
 
         if (Tidbits.CONFIG.DISC_JOCKEY.get() && Tidbits.CONFIG.DISCO_TILES.get()) {

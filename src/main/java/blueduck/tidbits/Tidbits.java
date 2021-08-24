@@ -2,10 +2,7 @@ package blueduck.tidbits;
 
 import blueduck.tidbits.config.ConfigHelper;
 import blueduck.tidbits.config.TidbitsConfig;
-import blueduck.tidbits.registry.TidbitsBlocks;
-import blueduck.tidbits.registry.TidbitsConfiguredFeatures;
-import blueduck.tidbits.registry.TidbitsItems;
-import blueduck.tidbits.registry.TidbitsVillagers;
+import blueduck.tidbits.registry.*;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Block;
@@ -27,6 +24,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.MerchantOffer;
+import net.minecraft.loot.LootEntry;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.TableLootEntry;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ITag;
@@ -43,6 +43,7 @@ import net.minecraft.world.gen.GenerationStage;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -51,6 +52,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -92,6 +94,7 @@ public class Tidbits
         TidbitsBlocks.init();
         TidbitsItems.init();
         TidbitsVillagers.init();
+        TidbitsSounds.init();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -207,8 +210,8 @@ public class Tidbits
             if (CONFIG.DISC_JOCKEY.get() && event.getType() == TidbitsVillagers.DISC_JOCKEY.get()) {
                 for (Item i : ItemTags.getAllTags().getTagOrEmpty(new ResourceLocation("minecraft:music_discs")).getValues()) {
                     event.getTrades().get(1).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 8), 5, 10, 0.05F));
-                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 12), 5, 10, 0.05F));
-                    event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 16), 5, 10, 0.05F));
+                    event.getTrades().get(3).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 12), 5, 20, 0.05F));
+                    event.getTrades().get(4).add((entity, random) -> new MerchantOffer(new ItemStack(i, 1), new ItemStack(Items.EMERALD, 16), 5, 20, 0.05F));
                     event.getTrades().get(5).add((entity, random) -> new MerchantOffer(new ItemStack(Items.EMERALD, 64), new ItemStack(i, 1), 5, 10, 0.05F));
 
                 }
@@ -370,6 +373,64 @@ public class Tidbits
                 }
 
             }
+        }
+
+        @SubscribeEvent
+        public static void onLootLoad(LootTableLoadEvent event) throws IllegalAccessException {
+            if (CONFIG.BIOME_DISCS.get()) {
+                if (event.getName().equals(new ResourceLocation("minecraft", "chests/abandoned_mineshaft")) || event.getName().equals(new ResourceLocation("minecraft", "chests/simple_dungeon")) || event.getName().equals(new ResourceLocation("minecraft", "chests/underwater_ruins_big"))) {
+                    LootPool pool = event.getTable().getPool("main");
+                    if (pool != null) {
+                        addEntry(pool, getInjectEntry(new ResourceLocation("tidbits:chests/biome_discs_underground"), 15));
+                    }
+                }
+                if (event.getName().equals(new ResourceLocation("minecraft", "chests/desert_pyramid"))) {
+                    LootPool pool = event.getTable().getPool("main");
+                    if (pool != null) {
+                        addEntry(pool, getInjectEntry(new ResourceLocation("tidbits:chests/desert_temple_disc"), 10));
+                    }
+                }
+                if (event.getName().equals(new ResourceLocation("minecraft", "chests/jungle_temple"))) {
+                    LootPool pool = event.getTable().getPool("main");
+                    if (pool != null) {
+                        addEntry(pool, getInjectEntry(new ResourceLocation("tidbits:chests/jungle_temple_disc"), 20));
+                    }
+                }
+                if (event.getName().equals(new ResourceLocation("minecraft", "chests/shipwreck_treasure"))) {
+                    LootPool pool = event.getTable().getPool("main");
+                    if (pool != null) {
+                        addEntry(pool, getInjectEntry(new ResourceLocation("tidbits:chests/shipwreck_disc"), 10));
+                    }
+                }
+                if (event.getName().equals(new ResourceLocation("minecraft", "chests/igloo_chest"))) {
+                    LootPool pool = event.getTable().getPool("main");
+                    if (pool != null) {
+                        addEntry(pool, getInjectEntry(new ResourceLocation("tidbits:chests/igloo_disc"), 20));
+                    }
+                }
             }
+            if (CONFIG.CHAINMAIL.get()) {
+                if (event.getName().equals(new ResourceLocation("minecraft", "chests/simple_dungeon")) || event.getName().equals(new ResourceLocation("minecraft", "chests/bastion_other"))) {
+                    LootPool pool = event.getTable().getPool("main");
+                    if (pool != null) {
+                        addEntry(pool, getInjectEntry(new ResourceLocation("tidbits:chests/chainmail"), 10));
+                    }
+                }
+            }
+        }
+
+        private static LootEntry getInjectEntry(ResourceLocation location, int weight) {
+            return TableLootEntry.lootTableReference(location).setWeight(weight).build();
+        }
+
+
+
+        private static void addEntry(LootPool pool, LootEntry entry) throws IllegalAccessException {
+            List<LootEntry> lootEntries = (List<LootEntry>) ObfuscationReflectionHelper.findField(LootPool.class, "field_186453_a").get(pool);
+            if (lootEntries.stream().anyMatch(e -> e == entry)) {
+                throw new RuntimeException("Attempted to add a duplicate entry to pool: " + entry);
+            }
+            lootEntries.add(entry);
+        }
     }
 }

@@ -6,9 +6,7 @@ import blueduck.tidbits.blocks.TidbitsOreBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FallingBlock;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
+import net.minecraft.item.*;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -23,6 +21,12 @@ public class TidbitsItems {
 
 
     public static final RegistryObject<Item> CHAINMAIL = conditionallyRegisterItem("chainmail", () -> new Item(new Item.Properties().tab(ItemGroup.TAB_MATERIALS)), () -> Tidbits.CONFIG.CHAINMAIL.get());
+
+    //Discs
+    public static final RegistryObject<Item> MUSIC_DISC_DUNES = conditionallyRegisterItem("music_disc_dunes", () -> new MusicDiscItem(1, () -> TidbitsSounds.DISC_DUNES.get(), new Item.Properties().stacksTo(1).tab(ItemGroup.TAB_MISC).rarity(Rarity.RARE)), () -> Tidbits.CONFIG.BIOME_DISCS.get());
+    public static final RegistryObject<Item> MUSIC_DISC_KELP = conditionallyRegisterItem("music_disc_kelp", () -> new MusicDiscItem(1, () -> TidbitsSounds.DISC_KELP.get(), new Item.Properties().stacksTo(1).tab(ItemGroup.TAB_MISC).rarity(Rarity.RARE)), () -> Tidbits.CONFIG.BIOME_DISCS.get());
+    public static final RegistryObject<Item> MUSIC_DISC_TROPIC = conditionallyRegisterItem("music_disc_tropic", () -> new MusicDiscItem(1, () -> TidbitsSounds.DISC_TROPIC.get(), new Item.Properties().stacksTo(1).tab(ItemGroup.TAB_MISC).rarity(Rarity.RARE)), () -> Tidbits.CONFIG.BIOME_DISCS.get());
+    public static final RegistryObject<Item> MUSIC_DISC_BLIZZARD = conditionallyRegisterItem("music_disc_blizzard", () -> new MusicDiscItem(1, () -> TidbitsSounds.DISC_BLIZZARD.get(), new Item.Properties().stacksTo(1).tab(ItemGroup.TAB_MISC).rarity(Rarity.RARE)), () -> Tidbits.CONFIG.BIOME_DISCS.get());
 
 
     public static void init() {

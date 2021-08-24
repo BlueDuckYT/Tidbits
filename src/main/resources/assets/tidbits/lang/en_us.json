@@ -6,6 +6,15 @@
 
   "item.tidbits.chainmail": "Chainmail",
 
+  "item.tidbits.music_disc_dunes": "Music Disc",
+  "item.tidbits.music_disc_dunes.desc": "Blue Duck - Dunes",
+  "item.tidbits.music_disc_kelp": "Music Disc",
+  "item.tidbits.music_disc_kelp.desc": "Blue Duck - Kelp",
+  "item.tidbits.music_disc_tropic": "Music Disc",
+  "item.tidbits.music_disc_tropic.desc": "Blue Duck - Tropic",
+  "item.tidbits.music_disc_blizzard": "Music Disc",
+  "item.tidbits.music_disc_blizzard.desc": "Blue Duck - Blizzard",
+
   "block.tidbits.log_splitting_table": "Log Splitting Table",
   "block.tidbits.redstone_workbench": "Redstone Workbench",
   "block.tidbits.blueprint_table": "Blueprint Table",
@@ -14,5 +23,10 @@
   "entity.minecraft.villager.tidbits.engineer": "Engineer",
   "entity.minecraft.villager.tidbits.lumberjack": "Lumberjack",
   "entity.minecraft.villager.tidbits.contractor": "Contractor",
-  "entity.minecraft.villager.tidbits.disc_jockey": "Disc Jockey"
+  "entity.minecraft.villager.tidbits.disc_jockey": "Disc Jockey",
+
+  "music.tidbits.disc.dunes": "Blue Duck - Dunes",
+  "music.tidbits.disc.kelp": "Blue Duck - Kelp",
+  "music.tidbits.disc.tropic": "Blue Duck - Tropic",
+  "music.tidbits.disc.blizzard": "Blue Duck - Blizzard"
 }

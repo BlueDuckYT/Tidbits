@@ -15,6 +15,7 @@ public class TidbitsConfig {
 
     public ConfigHelper.ConfigValueListener<Boolean> PRISMARINE_IN_OCEANS;
 
+    public ConfigHelper.ConfigValueListener<Boolean> BIOME_DISCS;
     public ConfigHelper.ConfigValueListener<Boolean> CHARCOAL_BLOCK;
     public ConfigHelper.ConfigValueListener<Boolean> CHAINMAIL;
     public ConfigHelper.ConfigValueListener<Boolean> DISCO_TILES;
@@ -66,6 +67,9 @@ public class TidbitsConfig {
 
         builder.push("Blocks and Items");
 
+        this.BIOME_DISCS= subscriber.subscribe(builder
+                .comment("Enable Biome-Based Discs?")
+                .define("biome_discs", true, o -> o instanceof Boolean));
         this.CHARCOAL_BLOCK= subscriber.subscribe(builder
                 .comment("Enable Charcoal Blocks?")
                 .define("charcoal_block", true, o -> o instanceof Boolean));

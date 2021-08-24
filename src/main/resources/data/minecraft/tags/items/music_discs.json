@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "tidbits:music_disc_dunes",
+      "required": false
+    },
+    {
+      "id": "tidbits:music_disc_kelp",
+      "required": false
+    },
+    {
+      "id": "tidbits:music_disc_tropic",
+      "required": false
+    },
+    {
+      "id": "tidbits:music_disc_blizzard",
+      "required": false
+    }
+  ]
+}

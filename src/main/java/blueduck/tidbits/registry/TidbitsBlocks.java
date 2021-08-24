@@ -45,7 +45,7 @@ public class TidbitsBlocks {
     public static final RegistryObject<Item> DISCO_TILES_ITEM = conditionallyRegisterItem("disco_tiles", () -> new BlockItem(DISCO_TILES.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS)), () -> Tidbits.CONFIG.DISCO_TILES.get());
 
 
-    public static final RegistryObject<Block> REDSTONE_WORKBENCH = BLOCKS.register("redstone_workbench", () -> new Block(Block.Properties.copy(Blocks.CARTOGRAPHY_TABLE)));
+    public static final RegistryObject<Block> REDSTONE_WORKBENCH = BLOCKS.register("redstone_workbench", () -> new Block(Block.Properties.copy(Blocks.CARTOGRAPHY_TABLE).noOcclusion()));
     public static final RegistryObject<Item> REDSTONE_WORKBENCH_ITEM = ITEMS.register("redstone_workbench", () -> new BlockItem(REDSTONE_WORKBENCH.get(), new Item.Properties().tab(ItemGroup.TAB_DECORATIONS)));
 
     public static final RegistryObject<Block> LOG_SPLITTING_TABLE = BLOCKS.register("log_splitting_table", () -> new Block(Block.Properties.copy(Blocks.CARTOGRAPHY_TABLE)));

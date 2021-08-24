@@ -1,0 +1,38 @@
+{
+	"music.tidbits.disc.dunes": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "tidbits:music/disc/dunes",
+				"stream": true
+			}
+		]
+	},
+	"music.tidbits.disc.kelp": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "tidbits:music/disc/kelp",
+				"stream": true
+			}
+		]
+	},
+	"music.tidbits.disc.tropic": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "tidbits:music/disc/tropic",
+				"stream": true
+			}
+		]
+	},
+	"music.tidbits.disc.blizzard": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "tidbits:music/disc/blizzard",
+				"stream": true
+			}
+		]
+	}
+}
