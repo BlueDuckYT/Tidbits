@@ -1,0 +1,32 @@
+{
+  "block.tidbits.flint_ore": "Minerale di selce",
+  "block.tidbits.sulfur_ore": "Minerale di zolfo del nether",
+  "block.tidbits.charcoal_block": "Blocco di carbonella",
+  "block.tidbits.disco_tiles": "Piastrella da discoteca",
+
+  "item.tidbits.chainmail": "Maglia",
+
+  "item.tidbits.music_disc_dunes": "Disco musicale",
+  "item.tidbits.music_disc_dunes.desc": "Blue Duck - Dunes",
+  "item.tidbits.music_disc_kelp": "Disco musicale",
+  "item.tidbits.music_disc_kelp.desc": "Blue Duck - Kelp",
+  "item.tidbits.music_disc_tropic": "Disco musicale",
+  "item.tidbits.music_disc_tropic.desc": "Blue Duck - Tropic",
+  "item.tidbits.music_disc_blizzard": "Disco musicale",
+  "item.tidbits.music_disc_blizzard.desc": "Blue Duck - Blizzard",
+
+  "block.tidbits.log_splitting_table": "Banco da spaccalegna",
+  "block.tidbits.redstone_workbench": "Banco da lavoro della redstone",
+  "block.tidbits.blueprint_table": "Tavola cianografica",
+
+
+  "entity.minecraft.villager.tidbits.engineer": "Ingegnere",
+  "entity.minecraft.villager.tidbits.lumberjack": "Taglialegna",
+  "entity.minecraft.villager.tidbits.contractor": "Appaltatore",
+  "entity.minecraft.villager.tidbits.disc_jockey": "DJ",
+
+  "music.tidbits.disc.dunes": "Blue Duck - Dunes",
+  "music.tidbits.disc.kelp": "Blue Duck - Kelp",
+  "music.tidbits.disc.tropic": "Blue Duck - Tropic",
+  "music.tidbits.disc.blizzard": "Blue Duck - Blizzard"
+}
