@@ -1,0 +1,40 @@
+{
+  "block.tidbits.flint_ore": "燧石矿石",
+  "block.tidbits.sulfur_ore": "下界硫磺矿石",
+  "block.tidbits.charcoal_block": "木炭块",
+  "block.tidbits.disco_tiles": "迪斯科瓷砖",
+
+  "item.tidbits.chainmail": "锁链甲片",
+  "item.tidbits.coal_chunk": "小块煤炭",
+  "item.tidbits.charcoal_chunk": "小块木炭",
+  "item.tidbits.glowcoal_chunk": "小块荧石",
+  "item.tidbits.blue_mouse_mask": "蓝色老鼠面具",
+  "item.tidbits.marshmallow_mask": "棉花糖面具",
+
+  "item.tidbits.music_disc_dunes": "音乐唱片",
+  "item.tidbits.music_disc_dunes.desc": "Blue Duck - Dunes",
+  "item.tidbits.music_disc_kelp": "音乐唱片",
+  "item.tidbits.music_disc_kelp.desc": "Blue Duck - Kelp",
+  "item.tidbits.music_disc_tropic": "音乐唱片",
+  "item.tidbits.music_disc_tropic.desc": "Blue Duck - Tropic",
+  "item.tidbits.music_disc_blizzard": "音乐唱片",
+  "item.tidbits.music_disc_blizzard.desc": "Blue Duck - Blizzard",
+  "item.tidbits.music_disc_serenity": "音乐唱片",
+  "item.tidbits.music_disc_serenity.desc": "Blue Duck - Serenity",
+
+  "block.tidbits.log_splitting_table": "锯木桌",
+  "block.tidbits.redstone_workbench": "红石工作台",
+  "block.tidbits.blueprint_table": "蓝图桌",
+
+
+  "entity.minecraft.villager.tidbits.engineer": "工程师",
+  "entity.minecraft.villager.tidbits.lumberjack": "伐木工",
+  "entity.minecraft.villager.tidbits.contractor": "建筑师",
+  "entity.minecraft.villager.tidbits.disc_jockey": "唱片骑师",
+
+  "music.tidbits.disc.dunes": "Blue Duck - Dunes",
+  "music.tidbits.disc.kelp": "Blue Duck - Kelp",
+  "music.tidbits.disc.tropic": "Blue Duck - Tropic",
+  "music.tidbits.disc.blizzard": "Blue Duck - Blizzard",
+  "music.tidbits.disc.serenity": "Blue Duck - Serenity"
+}
